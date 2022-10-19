@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab4.MainPage">
+
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--The buttons-->
+            <VerticalStackLayout Grid.Row="0" Grid.Column="0" Spacing="20" VerticalOptions="CenterAndExpand">
+                <Button Text="Add Entry" Background ="LightBlue" Margin="10" HeightRequest="200" BackgroundColor="White" TextColor="Black" FontSize="24.0" BorderColor="Black" BorderWidth="5" Clicked="AddEntry"/>
+                <Button Text="Delete Entry" Background ="LightBlue" Margin="10" HeightRequest="200" BackgroundColor="White" TextColor="Black" FontSize="24.0" BorderColor="Black" BorderWidth="5" Clicked="DeleteEntry"/>
+                <Button Text="Edit Entry" Background ="LightBlue" Margin="10" HeightRequest="200" BackgroundColor="White" TextColor="Black" FontSize="24.0" BorderColor="Black" BorderWidth="5" Clicked="EditEntry"/>
+            </VerticalStackLayout>
+
+            <!--List of Entries-->
+            <VerticalStackLayout  Grid.Row="0" Grid.Column="1" VerticalOptions="Center" Margin="20">
+                <ListView x:Name="EntriesLV" HeightRequest="700">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid RowSpacing="1" ColumnSpacing="1" Padding="10">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--Information for each row / entry TODO: fix format-->
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding Answer}" TextColor="Black" FontSize="20.0"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text=" - " TextColor="Black"/>
+
+                                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding Clue}" TextColor="Black" FontSize="20.0"/>
+                                    <Label Grid.Row="0" Grid.Column="3" Text=" - " TextColor="Black"/>
+
+                                    <Label Grid.Row="0" Grid.Column="4" Text="{Binding Date}" TextColor="Black" FontSize="20.0"/>
+                                    <Label Grid.Row="0" Grid.Column="5" Text=" - " TextColor="Black"/>
+
+                                    <Label Grid.Row="0" Grid.Column="6" Text="{Binding Difficulty}" TextColor="Black" FontSize="20.0"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </VerticalStackLayout>
+
+            <!--Buttons for Sorting-->
+            <VerticalStackLayout Grid.Row="0" Grid.ColumnSpan="2" VerticalOptions="EndAndExpand" HorizontalOptions="Start" Margin="0" Padding="0">
+                <HorizontalStackLayout Margin="20" VerticalOptions="EndAndExpand" HorizontalOptions="End" Spacing="10">
+                    <Button Text="Sort by Clue" Background ="LightBlue" Margin="10"  BackgroundColor="White" TextColor="Black" FontSize="24.0" BorderColor="Black" BorderWidth="5" Clicked="SortByClue"/>
+                    <Button Text="Sort by Answer" Background ="LightBlue" Margin="10"  BackgroundColor="White" TextColor="Black" FontSize="24.0" BorderColor="Black" BorderWidth="5" Clicked="SortByAnswer"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+            
+            <!--Form-->
+            <Border Stroke="Black" StrokeThickness="8" Grid.Row="1" Grid.ColumnSpan="2" Margin="5" Padding="0">
+                <VerticalStackLayout VerticalOptions="Center">
+                    <HorizontalStackLayout Margin="20" VerticalOptions="StartAndExpand" HorizontalOptions="Start" Spacing="10">
+                        <Label Text="Clue:" FontSize="32.0"/>
+                        <Entry x:Name="clueENT" Placeholder="clue goes here" WidthRequest="600" Keyboard="Chat" FontSize="32.0" ClearButtonVisibility="WhileEditing"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Margin="20" VerticalOptions="StartAndExpand" HorizontalOptions="Start" Spacing="10">
+                        <Label Text="Answer:" FontSize="32.0"/>
+                        <Entry x:Name="answerENT" Placeholder="answer goes here" WidthRequest="700" Keyboard="Chat" FontSize="32.0" ClearButtonVisibility="WhileEditing"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Margin="20" VerticalOptions="StartAndExpand" HorizontalOptions="Start" Spacing="10">
+                        <Label Text="Difficulty:" FontSize="32.0"/>
+                        <Entry x:Name="difficultyENT" Placeholder="#" WidthRequest="300" Keyboard="Numeric" FontSize="32.0" ClearButtonVisibility="WhileEditing"/>
+                        <Label Text="Date:" FontSize="32.0"/>
+                        <Entry x:Name="dateENT" Placeholder="" WidthRequest="300" Keyboard="Telephone" FontSize="32.0" ClearButtonVisibility="WhileEditing"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+    </ScrollView>
+</ContentPage>
+

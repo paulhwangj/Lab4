@@ -249,5 +249,25 @@ namespace Lab4
             }
             return id;
         }
+
+        /// <summary>
+        /// Clears the database by deleting all rows
+        /// </summary>
+        public void ClearDatabase()
+        {
+            try
+            {
+                using var con = new NpgsqlConnection(connectionString);
+                con.Open();
+                var sql = "DELETE FROM entries;"; // returns the largest id in the table
+                using var cmd = new NpgsqlCommand(sql, con);
+                int numRowsAffected = cmd.ExecuteNonQuery();    // assigns the largest id in the table to id
+                con.Close();
+            }
+            catch (IOException ioe)
+            {
+                Console.WriteLine("Error while Clearing database: {0}", ioe);
+            }
+        }
     }
 }

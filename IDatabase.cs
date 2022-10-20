@@ -13,5 +13,6 @@ namespace Lab4
         int GetNextId();
         void SortByClue();
         void SortByAnswer();
+        void ClearDatabase();
     }
 }

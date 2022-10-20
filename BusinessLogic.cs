@@ -179,5 +179,14 @@ namespace Lab4
         {
             db.SortByAnswer();
         }
+
+
+        /// <summary>
+        /// Clears the database
+        /// </summary>
+        public void ClearDatabase()
+        {
+            db.ClearDatabase();
+        }
     }
 }

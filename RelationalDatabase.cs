@@ -235,8 +235,18 @@ namespace Lab4
             con.Open();
             var sql = "SELECT MAX(id) FROM entries;"; // returns the largest id in the table
             using var cmd = new NpgsqlCommand(sql, con);
-            id = (Int32)cmd.ExecuteScalar();    // assigns the largest id in the table to id
+            var check = cmd.ExecuteScalar();    // assigns the largest id in the table to id
             con.Close();
+
+            // check will be of type System.DBNull if the table is empty (meaning no MAX(id) exists)
+            if(check.GetType() != typeof(System.DBNull))
+            {
+                id = (Int32)check;
+            }
+            else
+            {
+                id = 0;
+            }
             return id;
         }
     }

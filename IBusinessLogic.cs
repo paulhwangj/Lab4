@@ -12,8 +12,8 @@ namespace Lab4
         EntryEditError EditEntry(string clue, string answer, int difficulty, string date, int id);
         Entry FindEntry(int id);
         ObservableCollection<Entry> GetEntries();
+        int GetNextId();
         void SortByClue();
         void SortByAnswer();
-        void ChangeDatabase();
     }
 }

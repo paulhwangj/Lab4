@@ -159,8 +159,9 @@ namespace Lab4
         /// Ran only once at program start up, it retrieves the next available id by
         /// finding the max id within the database and sets latestId to that number
         /// </summary>
-        public void GetNextId() {
+        public int GetNextId() {
             latestId = db.GetNextId();
+            return latestId;
         }
 
         /// <summary>
@@ -177,16 +178,6 @@ namespace Lab4
         public void SortByAnswer()
         {
             db.SortByAnswer();
-        }
-        
-        /// <summary>
-        /// Added for testing purposes
-        /// Changes the db that we are working with
-        /// so that we don't work with the actual database when testing
-        /// </summary>
-        public void ChangeDatabase()
-        {
-            db = new TestDatabase();
         }
     }
 }
